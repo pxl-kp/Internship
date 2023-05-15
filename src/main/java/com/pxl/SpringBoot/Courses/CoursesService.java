@@ -18,7 +18,7 @@ public class CoursesService {
     }
 
     public List<Courses> getCourses(){
-        return coursesRepository.findAll();
+        return (List<Courses>) coursesRepository.findAll();
     }
 
     public void addNewCourse(Courses course){

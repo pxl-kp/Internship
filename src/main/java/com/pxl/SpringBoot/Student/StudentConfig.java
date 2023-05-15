@@ -12,8 +12,8 @@ import static java.time.Month.*;
 @Configuration                      // bean
 public class StudentConfig {
 
-    @Bean
-    CommandLineRunner commandLineRunnerStudents(StudentRepository repository) {
+    /*@Bean
+     CommandLineRunner commandLineRunnerStudents(StudentRepository repository) {
         return args -> {
             Student sasha = new Student(
                     "Oleksandr",
@@ -35,9 +35,6 @@ public class StudentConfig {
             repository.saveAll(
                     List.of(sasha, vika)
             );
-
-
-
         };
-    }
+    }*/
 }

@@ -7,17 +7,13 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-@Data
 @Entity
 @Table(name="courses")
-@NoArgsConstructor
 public class Courses {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "course_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false)
@@ -26,12 +22,15 @@ public class Courses {
     private LocalDate dateStart;
     private String link;
     private Boolean certificate;
-    @ManyToMany(mappedBy = "addedCourses")
+    @ManyToMany(mappedBy = "completedCourses")
     private List<Student> completedByStudents = new ArrayList<>();
     public void addStudent(Student student){
         completedByStudents.add(student);
     }
 
+    public Courses() {
+
+    }
 
     public Courses(Long id,
                    String title,

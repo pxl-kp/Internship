@@ -12,7 +12,7 @@ import static java.time.Month.*;
 @Configuration //bean
 public class CoursesConfig {
 
-    @Bean
+    /*@Bean
     CommandLineRunner commandLineRunnerCourses(CoursesRepository repository) {
         return args -> {
             Courses itvdn = new Courses(
@@ -42,5 +42,5 @@ public class CoursesConfig {
                     List.of(itvdn, w3school, SpringBoot)
             );
         };
-    }
+    }*/
 }

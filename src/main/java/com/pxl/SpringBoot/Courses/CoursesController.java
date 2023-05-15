@@ -1,6 +1,5 @@
 package com.pxl.SpringBoot.Courses;
 
-import com.pxl.SpringBoot.Student.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

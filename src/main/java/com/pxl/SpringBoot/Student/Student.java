@@ -15,30 +15,19 @@ import java.util.List;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   /* @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
-    )*/
-    //@Column(name = "student_id")
     private Long id;
     private String name;
-    //@Column(unique = true)
     private String email;
     private LocalDate dob;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "student_courses",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
-    private List<Courses> addedCourses = new ArrayList<>();
+    private List<Courses> completedCourses = new ArrayList<>();
     public void addCourse(Courses course){
-        addedCourses.add(course);
+        completedCourses.add(course);
     }
 
     @Transient
