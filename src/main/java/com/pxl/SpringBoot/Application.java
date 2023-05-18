@@ -1,10 +1,10 @@
 package com.pxl.SpringBoot;
 
-
 import com.pxl.SpringBoot.Courses.Courses;
 import com.pxl.SpringBoot.Courses.CoursesRepository;
 import com.pxl.SpringBoot.Student.Student;
 import com.pxl.SpringBoot.Student.StudentRepository;
+import com.pxl.SpringBoot.user.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -17,7 +17,6 @@ import java.util.List;
 import static java.time.Month.*;
 import static java.time.Month.MAY;
 
-
 @SpringBootApplication
 public class Application {
 
@@ -28,6 +27,8 @@ public class Application {
 				configurableApplicationContext.getBean(StudentRepository.class);
 		CoursesRepository coursesRepository =
 				configurableApplicationContext.getBean(CoursesRepository.class);
+		UserRepository userRepository =
+				configurableApplicationContext.getBean(UserRepository.class);
 
 		Student sasha = new Student(
 				"Oleksandr",
@@ -63,6 +64,5 @@ public class Application {
 		vika.addCourse(SpringBoot);
 
 		studentRepository.saveAll(students);
-
 	}
 }

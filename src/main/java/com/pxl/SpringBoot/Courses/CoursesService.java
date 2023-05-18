@@ -1,7 +1,10 @@
 package com.pxl.SpringBoot.Courses;
 
+import com.pxl.SpringBoot.exception.ResourceNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,19 +44,18 @@ public class CoursesService {
     }
 
     @Transactional
-    public void updateCourse(Long courseId,
-                             String title){
-        Courses course = coursesRepository.findById(courseId)
-                .orElseThrow(() -> new IllegalStateException(
-                        "Course with ID " + courseId + " does not exist"));
+    public ResponseEntity<Courses> updateCourse(Long courseId, String title){
+        Courses _course = coursesRepository.findById(courseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found Course with id = " + courseId));
 
         if(title != null &&
             title.length() > 0 &&
-            !Objects.equals(course.getTitle(), title)) {
+            !Objects.equals(_course.getTitle(), title)) {
                 Optional<Courses> coursesOptional = coursesRepository
                         .findCoursesByTitle(title);
-            course.setTitle(title);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
