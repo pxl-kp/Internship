@@ -1,6 +1,5 @@
 package com.pxl.SpringBoot;
 
-
 import com.pxl.SpringBoot.Courses.Courses;
 import com.pxl.SpringBoot.Courses.CoursesRepository;
 import com.pxl.SpringBoot.Student.Student;
@@ -16,7 +15,6 @@ import java.util.List;
 
 import static java.time.Month.*;
 import static java.time.Month.MAY;
-
 
 @SpringBootApplication
 public class Application {
@@ -63,6 +61,5 @@ public class Application {
 		vika.addCourse(SpringBoot);
 
 		studentRepository.saveAll(students);
-
 	}
 }
